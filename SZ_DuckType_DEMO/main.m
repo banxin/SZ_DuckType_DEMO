@@ -25,6 +25,8 @@
  
  https://www.jianshu.com/p/8e700673202b
  http://blog.sunnyxx.com/2014/08/26/objc-duck-advanced/
+ 
+ 综合demo，做了一点点小优化
  */
 
 void testDuckModel() {
