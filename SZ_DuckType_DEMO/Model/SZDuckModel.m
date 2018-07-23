@@ -44,6 +44,12 @@
 /*
  属性的getter和setter，这正对应了NSMutableDictionary的objectForKey:和setObjectForKey:，同时，JSON数据也会解析成字典，这就完成了巧妙的对接
  */
+/*
+ NSMethodSignature 这个玩意 是iOS中提供的一个 叫 Type Encoding 的东西，v 代表 void ，i 代表 int。。。，有兴趣可以去看看
+ 
+ return [NSMethodSignature signatureWithObjCTypes:"v16@0:8"];
+ return [NSMethodSignature signatureWithObjCTypes:"i@:i"];
+ */
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel
 {
     // 变成 NSMutableDictionary 的 方法签名
@@ -64,6 +70,13 @@
     return [[self.innerDictionary class] instanceMethodSignatureForSelector:changedSel];
 }
 
+/*
+    NSInvocation封装了一个方法调用，包括：方法调用者、方法名、方法参数
+ 
+    anInvocation.target 方法调用者
+    anInvocation.selector 方法名
+    [anInvocation getArgument:NULL atIndex:0]
+ */
 - (void)forwardInvocation:(NSInvocation *)invocation
 {
     NSString *propertyName = nil;
